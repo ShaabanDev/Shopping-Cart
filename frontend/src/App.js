@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { render } from 'react-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Container, Row, Col } from 'react-bootstrap';
