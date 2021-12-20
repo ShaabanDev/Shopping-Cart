@@ -14,7 +14,7 @@ const ProductScreen = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
   return (
     <>
       <Link to='/' className='btn btn-light my-3'>
