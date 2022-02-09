@@ -99,6 +99,25 @@ const getUserById = asyncHandler(async (req, res) => {
   }
   res.send(user);
 });
+
+const updateUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = req.body.isAdmin;
+    const updatedUser = await user.save();
+    return res.json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  }
+
+  res.status(404);
+  throw new Error('user is not found');
+});
 export {
   authUser,
   getProfile,
@@ -107,4 +126,5 @@ export {
   getAllUsers,
   deleteUser,
   getUserById,
+  updateUserById,
 };
