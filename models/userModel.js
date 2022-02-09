@@ -34,7 +34,7 @@ userSchema.methods.matchPassword = async function (password) {
 userSchema.pre('save', async function (next) {
   const user = this;
   if (user.isModified('password')) {
-    user.password = await bcryptjs.hash(user.password, 8);
+    user.password = await bcrypt.hash(user.password, 8);
   }
   next();
 });
