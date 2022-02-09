@@ -75,4 +75,9 @@ const updateProfile = asyncHandler(async (req, res) => {
   res.status(404);
   throw new Error('user not found');
 });
-export { authUser, getProfile, registerUser, updateProfile };
+
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({});
+  res.send(users);
+});
+export { authUser, getProfile, registerUser, updateProfile, getAllUsers };
