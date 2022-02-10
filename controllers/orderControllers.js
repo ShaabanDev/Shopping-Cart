@@ -67,4 +67,16 @@ const getCurrentUserOrders = asyncHandler(async (req, res) => {
   res.status(404);
   throw new Error('orders not found');
 });
-export { createOrder, getOrderById, updateOrderToPaid, getCurrentUserOrders };
+
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find({}).populate('user', 'id name');
+  res.json(orders);
+});
+
+export {
+  createOrder,
+  getOrderById,
+  updateOrderToPaid,
+  getCurrentUserOrders,
+  getOrders,
+};
